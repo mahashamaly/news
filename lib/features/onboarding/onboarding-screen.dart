@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:news/features/core/datasource/local-data/Preferences_manager.dart';
+import 'package:news/features/core/theme/light-color.dart';
+import 'package:news/features/auth/login-screen.dart';
 import 'package:news/features/onboarding/controller/onboarding-controller.dart';
 import 'package:news/features/onboarding/model/onboarding-model.dart';
 import 'package:provider/provider.dart';
@@ -6,6 +10,14 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen extends StatelessWidget {
   OnboardingScreen({super.key});
+  _onFinish(BuildContext context)async{
+    //هنا بدنا نخزن الفيمة قبل ما ننتقل للوجن
+  await  PreferencesManager().setBool("onboarding-complete", true);
+ Navigator.push(
+  context,
+     MaterialPageRoute(builder: (context) => LoginScreen()),
+        );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +27,19 @@ class OnboardingScreen extends StatelessWidget {
         final controller = context.read<Onboardingcontroller>();
         return Scaffold(
           appBar: AppBar(
-            backgroundColor: Color(0xFFf5f5f5),
+           
+         // backgroundColor: Color(0xFFF5F5F5),
+
+    
             actions: [
               Consumer<Onboardingcontroller>(
                 builder: (context, Onboardingcontroller value, child) {
                   return value.isLastpage
                       ? SizedBox()
                       : TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                                 _onFinish(context);
+                          },
                           child: Text(
                             "Skip",
                             style: TextStyle(
@@ -117,10 +134,18 @@ class OnboardingScreen extends StatelessWidget {
                   builder: (context, Onboardingcontroller value, child) {
                     return ElevatedButton(
                       onPressed: () {
-                        controller.pageController.nextPage(
+                        //هنا اذا المستخدم ما وصل للصقحة الأخيرة
+                        if(!value.isLastpage){
+                           controller.pageController.nextPage(
                           duration: Duration(milliseconds: 300),
+                          //الـ curve يحدد كيف تتسارع الحركة أو تبطئ خلال المدة المحددة.
                           curve: Curves.easeInOut,
                         );
+                        //هنا وصل لاخر صفحة
+                        }else{
+                           _onFinish(context);
+                        }
+                       
                       },
                       child: Text(value.isLastpage ? 'Get Started' : "Next"),
                       style: ElevatedButton.styleFrom(
