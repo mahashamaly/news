@@ -11,7 +11,7 @@ import 'package:news/features/splash/splash-screen.dart';
 void main() async{
  WidgetsFlutterBinding.ensureInitialized();
    await PreferencesManager().init();
-   //PreferencesManager().clear();
+   //@PreferencesManager().clear();
   runApp(const MyApp());
 }
 

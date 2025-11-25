@@ -19,7 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _form = GlobalKey();
   String?errorMessage;
   bool isLoading=false;
-  void register()async{
+  void Login()async{
 setState(() {
   isLoading=true;
   errorMessage=null;
@@ -31,14 +31,17 @@ if(savedEmali==null&&savedPassword==null){
   //هنا لازم اول اشى تعمل ريجستر
   setState(() {
     errorMessage="No Account Found Please Register First";
+    isLoading=false;
   });
+      return; // مهم جداً حتى ما يكمل الكود
 }
 //فى حالة يلى دخلته ما بساوى القيم الحقيقية المدخلة
 if(savedEmali!=emailController.text&&savedPassword!=passwordController.text){
   setState(() {
     errorMessage="Incorrect Email or Password";
-
+    isLoading=false;
   });
+      return; // مهم جداً حتى ما يكمل الكود
 }
 await   PreferencesManager().setBool("is-logged-in", true);
 setState(() {
@@ -101,6 +104,8 @@ Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Mainscr
                     }
                   },
                 ),
+                
+                  
                 SizedBox(height: 24),
                 CustomTextFormField(
                   controller: passwordController,
@@ -121,15 +126,22 @@ Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Mainscr
               
                   },
                 ),
+                 if(errorMessage!=null)
+                   Padding(
+                     padding: const EdgeInsets.all(8.0),
+                     child: Text(errorMessage!,style: TextStyle(color: Colors.red),),
+                   ),
                 SizedBox(height: 24),
                 SizedBox(
                   width: double.infinity,
                   height: 48,
                   child: ElevatedButton(
                     onPressed: () {
-                      if (_form.currentState?.validate() ?? false) {}
+                      if (_form.currentState?.validate() ?? false) {
+                        Login();
+                      }
                     },
-                    child: Text('Sign In'),
+                    child:isLoading?CircularProgressIndicator():Text('Sign In'),
                   ),
                 ),
                 SizedBox(height: 24),
