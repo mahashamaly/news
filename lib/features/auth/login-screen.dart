@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news/constants/app_sizes.dart';
 import 'package:news/features/auth/register-screen.dart';
 import 'package:news/features/core/datasource/local-data/Preferences_manager.dart';
 import 'package:news/features/core/widgets/custom_text_form_faild.dart';
@@ -72,20 +73,20 @@ Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Mainscr
         ),
 
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding:  EdgeInsets.all(AppSizes.r16),
           child: Form(
             key: _form,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(child: Image.asset('assets/img/logo.png', height: 45)),
-                SizedBox(height: 40),
+                Center(child: Image.asset('assets/img/logo.png', height: AppSizes.h45)),
+                SizedBox(height: AppSizes.h40),
                 Text(
                   "Welcome to Newts",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                  style: TextStyle(fontSize: AppSizes.sp20, fontWeight: FontWeight.w700),
                 ),
-                SizedBox(height: 24),
+                SizedBox(height: AppSizes.h24),
                 CustomTextFormField(
                   controller: emailController,
                   hintText: 'maha@gmail.com',
@@ -106,7 +107,7 @@ Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Mainscr
                 ),
                 
                   
-                SizedBox(height: 24),
+                SizedBox(height: AppSizes.h24),
                 CustomTextFormField(
                   controller: passwordController,
                   hintText: '*************',
@@ -128,13 +129,13 @@ Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Mainscr
                 ),
                  if(errorMessage!=null)
                    Padding(
-                     padding: const EdgeInsets.all(8.0),
+                     padding:  EdgeInsets.symmetric(vertical: AppSizes.ph8),
                      child: Text(errorMessage!,style: TextStyle(color: Colors.red),),
                    ),
-                SizedBox(height: 24),
+                SizedBox(height: AppSizes.ph24),
                 SizedBox(
                   width: double.infinity,
-                  height: 48,
+                  height: AppSizes.h48,
                   child: ElevatedButton(
                     onPressed: () {
                       if (_form.currentState?.validate() ?? false) {
@@ -144,15 +145,15 @@ Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Mainscr
                     child:isLoading?CircularProgressIndicator():Text('Sign In'),
                   ),
                 ),
-                SizedBox(height: 24),
+                SizedBox(height:AppSizes.ph24 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       "Don’t have an account ?",
-                      style: TextStyle(fontSize: 14),
+                      style: TextStyle(fontSize: AppSizes.sp14),
                     ),
-                    SizedBox(width: 4),
+                    SizedBox(width: AppSizes.pw8),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -165,7 +166,7 @@ Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Mainscr
                       child: Text(
                         "Sign Up",
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: AppSizes.sp16,
                           color: Theme.of(context).primaryColor,
                         ),
                       ),

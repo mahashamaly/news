@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news/features/core/datasource/local-data/Preferences_manager.dart';
 import 'package:news/features/home/home-screen.dart';
 import 'package:news/features/auth/login-screen.dart';
+import 'package:news/features/main/main-screen.dart';
 import 'package:news/features/onboarding/model/onboarding-model.dart';
 import 'package:news/features/onboarding/onboarding-screen.dart';
 
@@ -44,7 +45,7 @@ class _SplashscreenState extends State<Splashscreen> {
     } else {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Homescreen()),
+        MaterialPageRoute(builder: (context) => Mainscreen()),
       );
     }
   }

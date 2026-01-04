@@ -4,7 +4,7 @@ class NewArticleModel {
   final String? description;
   final String? url;
   final String? urlToImage;
-  final String? publishedAt;
+  final DateTime publishedAt;
   final String? content;
 
   NewArticleModel({
@@ -17,15 +17,15 @@ class NewArticleModel {
     required this.content,
   });
   //تحول الماب لتاسك مودل
-  factory NewArticleModel.fromjson(Map<String, dynamic> json) {
+  factory NewArticleModel.fromjson(Map<String, dynamic> map) {
     return NewArticleModel(
-      author: json["author"],
-      title: json["title"] ,
-      description: json["description"],
-      url: json["url"],
-      urlToImage: json["urlToImage"],
-      publishedAt: json["publishedAt"],
-      content: json["content"],
+      author: map["author"],
+      title: map["title"] ,
+      description: map["description"],
+      url: map["url"],
+      urlToImage: map["urlToImage"],
+      publishedAt:DateTime.tryParse(map["publishedAt"])??DateTime.now(),          
+      content: map["content"],
     );
   }
   // // //بتحول التاسك مودل لماب
@@ -40,4 +40,13 @@ class NewArticleModel {
       " content": content,
     };
   }
+
+
+
+
+
+
+
+
+
 }

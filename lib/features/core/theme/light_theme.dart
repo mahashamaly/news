@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news/constants/app_sizes.dart';
 import 'package:news/features/core/theme/light-color.dart';
 
 ThemeData lightTheme = ThemeData(
@@ -10,10 +12,17 @@ ThemeData lightTheme = ThemeData(
   primaryColor: Lightcolor.primaryColor,
 
   appBarTheme: AppBarTheme(
-    backgroundColor: Color(0xffF6F7F9),
+    backgroundColor: Color(0xffFFFFFF),
+    titleTextStyle: TextStyle(
+      fontSize:16.sp,fontWeight: FontWeight.w700,
+      color: Color(0xff141414),
+
+    )
+
+
   ),
   progressIndicatorTheme: ProgressIndicatorThemeData(
-color: Colors.black,
+color: Colors.white,
 
   ),
 
@@ -57,8 +66,9 @@ color: Colors.black,
     style: ElevatedButton.styleFrom(
       backgroundColor:Lightcolor.primaryColor,
       foregroundColor: Lightcolor.backgroundColor,
-      textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+      textStyle: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w400),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+      minimumSize: Size.fromHeight(AppSizes.h52)
     ),
   ),
   textButtonTheme: TextButtonThemeData(
