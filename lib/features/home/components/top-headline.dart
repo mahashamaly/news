@@ -25,10 +25,10 @@ class Topheadline extends StatelessWidget {
           return SliverToBoxAdapter(child: Center(child: Text(Controller.errorMessage!)));
           case RequestStatusEnums.loaded:
           return  SliverList.builder(
-          itemCount: Controller.newsTopHeadlines.length,
+          itemCount: Controller.newsTopHeadlinesList.length,
 
           itemBuilder: (BuildContext context, int index) {
-            final model = Controller.newsTopHeadlines[index];
+            final model = Controller.newsTopHeadlinesList[index];
              return NewsItem(model: model);
            
           },

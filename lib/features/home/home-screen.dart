@@ -15,6 +15,7 @@ import 'package:news/features/home/components/trending-news.dart';
 import 'package:news/features/home/components/view-all-components.dart';
 import 'package:news/features/home/model/home-controller.dart';
 import 'package:news/features/home/model/new-article-model.dart';
+import 'package:news/features/home/repos/news_repository.dart';
 import 'package:provider/provider.dart';
 
 
@@ -24,7 +25,7 @@ class Homescreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (BuildContext context) {
-        return Homecontroller();
+        return Homecontroller(NewsRepository());
       },
       child: Consumer<Homecontroller>(
         builder: (context, Controller, child) {

@@ -76,10 +76,10 @@ class CategoriesScreen extends StatelessWidget {
 
                Expanded(
                 child: ListView.builder(
-          itemCount: Controller.newsTopHeadlines.length,
+             itemCount: Controller.newsTopHeadlinesList.length,
 
           itemBuilder: (BuildContext context, int index) {
-            final model = Controller.newsTopHeadlines[index];
+            final model = Controller.newsTopHeadlinesList[index];
             return NewsItem(model: model);
           
           },

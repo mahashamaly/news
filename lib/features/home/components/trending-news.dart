@@ -80,7 +80,7 @@ class TrendingNews extends StatelessWidget {
                               //
                               //هيك بحكيله خود 3 بس
                               //هيك امن اكتر حتى لو أقل من 3
-                              itemCount: Controller.newsEverything.take(6).length,
+                              itemCount: Controller.newsEverythingList.take(6).length,
                               scrollDirection: Axis.horizontal,
                               //هاى بتحل محل البادنح
                               separatorBuilder: (context, index) {
@@ -89,7 +89,7 @@ class TrendingNews extends StatelessWidget {
 
                               itemBuilder: (BuildContext context, int index) {
                                 //بدل ما اضل اكتبها بكل سطر
-                                final model = Controller.newsEverything[index];
+                                final model = Controller.newsEverythingList[index];
                                 return SizedBox(
                                   // عملت للكليب سايز علشان الكلام لمن يجى ما يطلع برة الصورة
                                   width: 240,

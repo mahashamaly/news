@@ -16,7 +16,7 @@ void main() async{
  WidgetsFlutterBinding.ensureInitialized();
  await ScreenUtil.ensureScreenSize();
    await PreferencesManager().init();
-   PreferencesManager().clear();
+   //PreferencesManager().clear();
   runApp(const MyApp());
 }
 
